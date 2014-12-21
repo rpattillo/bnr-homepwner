@@ -10,4 +10,19 @@
 
 @implementation ItemsViewController
 
+#pragma mark - Initializers
+
+- (instancetype)init
+{
+   self = [super initWithStyle:UITableViewStylePlain];
+
+   return self;
+}
+
+
+- (instancetype)initWithStyle:(UITableViewStyle)style
+{
+   return [self init];
+}
+
 @end
