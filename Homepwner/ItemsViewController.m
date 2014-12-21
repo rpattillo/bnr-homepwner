@@ -33,6 +33,17 @@
 }
 
 
+#pragma mark - View life cycle
+
+- (void)viewDidLoad
+{
+   [super viewDidLoad];
+   
+   [self.tableView registerClass:[UITableViewCell class]
+          forCellReuseIdentifier:@"UITableViewCell"];
+}
+
+
 #pragma mark - Table View Datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -43,9 +54,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   UITableViewCell *cell = [[UITableViewCell alloc]
-                            initWithStyle:UITableViewCellStyleDefault
-                            reuseIdentifier:@"UITableViewCell"];
+   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
    NSArray *items = [[ItemStore sharedStore] allItems];
    Item *item = items[indexPath.row];
    
