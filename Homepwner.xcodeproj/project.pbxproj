@@ -15,6 +15,7 @@
 		9C346A571A465AF4009AFAA6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C346A551A465AF4009AFAA6 /* LaunchScreen.xib */; };
 		9C346A631A465AF4009AFAA6 /* HomepwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C346A621A465AF4009AFAA6 /* HomepwnerTests.m */; };
 		9C346A6E1A466012009AFAA6 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C346A6D1A466012009AFAA6 /* Item.m */; };
+		9C346A711A4661F7009AFAA6 /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C346A701A4661F7009AFAA6 /* ItemsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		9C346A621A465AF4009AFAA6 /* HomepwnerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomepwnerTests.m; sourceTree = "<group>"; };
 		9C346A6C1A466012009AFAA6 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		9C346A6D1A466012009AFAA6 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		9C346A6F1A4661F7009AFAA6 /* ItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsViewController.h; sourceTree = "<group>"; };
+		9C346A701A4661F7009AFAA6 /* ItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,16 +87,18 @@
 		9C346A451A465AF4009AFAA6 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
-				9C346A6C1A466012009AFAA6 /* Item.h */,
-				9C346A6D1A466012009AFAA6 /* Item.m */,
 				9C346A4A1A465AF4009AFAA6 /* AppDelegate.h */,
 				9C346A4B1A465AF4009AFAA6 /* AppDelegate.m */,
+				9C346A531A465AF4009AFAA6 /* Images.xcassets */,
+				9C346A6C1A466012009AFAA6 /* Item.h */,
+				9C346A6D1A466012009AFAA6 /* Item.m */,
+				9C346A6F1A4661F7009AFAA6 /* ItemsViewController.h */,
+				9C346A701A4661F7009AFAA6 /* ItemsViewController.m */,
+				9C346A551A465AF4009AFAA6 /* LaunchScreen.xib */,
+				9C346A501A465AF4009AFAA6 /* Main.storyboard */,
+				9C346A461A465AF4009AFAA6 /* Supporting Files */,
 				9C346A4D1A465AF4009AFAA6 /* ViewController.h */,
 				9C346A4E1A465AF4009AFAA6 /* ViewController.m */,
-				9C346A501A465AF4009AFAA6 /* Main.storyboard */,
-				9C346A531A465AF4009AFAA6 /* Images.xcassets */,
-				9C346A551A465AF4009AFAA6 /* LaunchScreen.xib */,
-				9C346A461A465AF4009AFAA6 /* Supporting Files */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C346A711A4661F7009AFAA6 /* ItemsViewController.m in Sources */,
 				9C346A6E1A466012009AFAA6 /* Item.m in Sources */,
 				9C346A4F1A465AF4009AFAA6 /* ViewController.m in Sources */,
 				9C346A4C1A465AF4009AFAA6 /* AppDelegate.m in Sources */,
