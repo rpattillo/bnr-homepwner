@@ -7,6 +7,8 @@
 //
 
 #import "ItemsViewController.h"
+#import "ItemStore.h"
+#import "Item.h"
 
 @implementation ItemsViewController
 
@@ -15,6 +17,11 @@
 - (instancetype)init
 {
    self = [super initWithStyle:UITableViewStylePlain];
+   if (self) {
+      for (int i = 0; i < 5; i++) {
+         [[ItemStore sharedStore] createItem];
+      }
+   }
 
    return self;
 }
@@ -24,5 +31,29 @@
 {
    return [self init];
 }
+
+
+#pragma mark - Table View Datasource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+   return [[[ItemStore sharedStore] allItems] count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   UITableViewCell *cell = [[UITableViewCell alloc]
+                            initWithStyle:UITableViewCellStyleDefault
+                            reuseIdentifier:@"UITableViewCell"];
+   NSArray *items = [[ItemStore sharedStore] allItems];
+   Item *item = items[indexPath.row];
+   
+   cell.textLabel.text = item.description;
+   
+   return cell;
+}
+
+
 
 @end
