@@ -14,6 +14,7 @@
 		9C346A541A465AF4009AFAA6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C346A531A465AF4009AFAA6 /* Images.xcassets */; };
 		9C346A571A465AF4009AFAA6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C346A551A465AF4009AFAA6 /* LaunchScreen.xib */; };
 		9C346A631A465AF4009AFAA6 /* HomepwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C346A621A465AF4009AFAA6 /* HomepwnerTests.m */; };
+		9C346A6E1A466012009AFAA6 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C346A6D1A466012009AFAA6 /* Item.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		9C346A5C1A465AF4009AFAA6 /* HomepwnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomepwnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C346A611A465AF4009AFAA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C346A621A465AF4009AFAA6 /* HomepwnerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomepwnerTests.m; sourceTree = "<group>"; };
+		9C346A6C1A466012009AFAA6 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		9C346A6D1A466012009AFAA6 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 		9C346A451A465AF4009AFAA6 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				9C346A6C1A466012009AFAA6 /* Item.h */,
+				9C346A6D1A466012009AFAA6 /* Item.m */,
 				9C346A4A1A465AF4009AFAA6 /* AppDelegate.h */,
 				9C346A4B1A465AF4009AFAA6 /* AppDelegate.m */,
 				9C346A4D1A465AF4009AFAA6 /* ViewController.h */,
@@ -219,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C346A6E1A466012009AFAA6 /* Item.m in Sources */,
 				9C346A4F1A465AF4009AFAA6 /* ViewController.m in Sources */,
 				9C346A4C1A465AF4009AFAA6 /* AppDelegate.m in Sources */,
 				9C346A491A465AF4009AFAA6 /* main.m in Sources */,
