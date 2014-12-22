@@ -60,6 +60,20 @@
 }
 
 
+- (NSArray *)expensiveItems
+{
+   NSPredicate *predicate = [NSPredicate predicateWithFormat:@"valueInDollars > 50"];
+   return [self.privateItems filteredArrayUsingPredicate:predicate];
+}
+
+
+- (NSArray *)inexpensiveItems
+{
+   NSPredicate *predicate = [NSPredicate predicateWithFormat:@"valueInDollars <= 50"];
+   return [self.privateItems filteredArrayUsingPredicate:predicate];
+}
+
+
 #pragma mark -
 
 - (Item *)createItem

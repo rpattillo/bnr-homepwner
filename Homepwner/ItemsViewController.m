@@ -46,16 +46,33 @@
 
 #pragma mark - Table View Datasource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+   return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   return [[[ItemStore sharedStore] allItems] count];
+   if (section == 0) {
+      return [[[ItemStore sharedStore] expensiveItems] count];
+   }
+   else {
+      return [[[ItemStore sharedStore] inexpensiveItems] count];
+   }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-   NSArray *items = [[ItemStore sharedStore] allItems];
+   NSArray *items;
+   if (indexPath.section == 0) {
+      items = [[ItemStore sharedStore] expensiveItems];
+   }
+   else {
+      items = [[ItemStore sharedStore] inexpensiveItems];
+   }
+   
    Item *item = items[indexPath.row];
    
    cell.textLabel.text = item.description;
