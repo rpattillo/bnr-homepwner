@@ -13,6 +13,7 @@
 @interface ItemsViewController()
 
 @property (nonatomic, strong) IBOutlet UIView *headerView;
+@property (nonatomic, strong) UITableViewRowAction *deleteAction;
 
 @end
 
@@ -35,6 +36,35 @@
 - (instancetype)initWithStyle:(UITableViewStyle)style
 {
    return [self init];
+}
+
+
+#pragma mark - Accessors
+
+- (UIView *)headerView
+{
+   if ( !_headerView ) {
+      [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
+   }
+
+   return _headerView;
+}
+
+
+- (UITableViewRowAction *)deleteAction
+{
+   if ( !_deleteAction ) {
+      self.deleteAction =
+         [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive
+                                            title:@"Remove"
+                                          handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+                                             [self tableView:self.tableView
+                                          commitEditingStyle:UITableViewCellEditingStyleDelete
+                                           forRowAtIndexPath:indexPath];
+                                          }];
+   }
+
+   return _deleteAction;
 }
 
 
@@ -90,17 +120,15 @@
 }
 
 
-#pragma mark - NIB Connections
+#pragma mark - Table View Delegate
 
-- (UIView *)headerView
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   if ( !_headerView ) {
-      [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
-   }
-   
-   return _headerView;
+   return @[self.deleteAction];
 }
 
+
+#pragma mark - NIB Connections
 
 - (IBAction)addNewItem:(id)sender
 {
