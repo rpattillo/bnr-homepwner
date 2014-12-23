@@ -41,6 +41,21 @@
    
    [self.tableView registerClass:[UITableViewCell class]
           forCellReuseIdentifier:@"UITableViewCell"];
+   
+   self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
+}
+
+
+#pragma mark - Table View Delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   if ( indexPath.row < [[[ItemStore sharedStore] allItems] count] ) {
+      return 60;
+   }
+   else {
+    return 44;
+   }
 }
 
 
@@ -59,10 +74,13 @@
    if (indexPath.row < [[[ItemStore sharedStore] allItems] count]) {
       NSArray *items = [[ItemStore sharedStore] allItems];
       Item *item = items[indexPath.row];
-      
       cell.textLabel.text = item.description;
+      
+      cell.textLabel.font = [UIFont systemFontOfSize:20.0];
    } else {
       cell.textLabel.text = @"No more items!";
+      
+      cell.textLabel.font = [UIFont systemFontOfSize:13.0];
    }
    
    
