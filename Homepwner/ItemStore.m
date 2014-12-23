@@ -60,7 +60,7 @@
 }
 
 
-#pragma mark -
+#pragma mark - Store Management
 
 - (Item *)createItem
 {
@@ -68,6 +68,12 @@
    [self.privateItems addObject:item];
    
    return item;
+}
+
+
+- (void)removeItem:(Item *)item
+{
+   [self.privateItems removeObjectIdenticalTo:item];
 }
 
 
