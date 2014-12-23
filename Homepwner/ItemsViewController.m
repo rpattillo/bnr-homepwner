@@ -48,17 +48,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   return [[[ItemStore sharedStore] allItems] count];
+   return [[[ItemStore sharedStore] allItems] count] + 1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-   NSArray *items = [[ItemStore sharedStore] allItems];
-   Item *item = items[indexPath.row];
    
-   cell.textLabel.text = item.description;
+   if (indexPath.row < [[[ItemStore sharedStore] allItems] count]) {
+      NSArray *items = [[ItemStore sharedStore] allItems];
+      Item *item = items[indexPath.row];
+      
+      cell.textLabel.text = item.description;
+   } else {
+      cell.textLabel.text = @"No more items!";
+   }
+   
    
    return cell;
 }
