@@ -12,9 +12,6 @@
 #import "DetailViewController.h"
 
 @interface ItemsViewController()
-
-@property (nonatomic, strong) IBOutlet UIView *headerView;
-
 @end
 
 
@@ -54,9 +51,6 @@
    
    [self.tableView registerClass:[UITableViewCell class]
           forCellReuseIdentifier:@"UITableViewCell"];
-   
-   UIView *header = self.headerView;
-   [self.tableView setTableHeaderView:header];
 }
 
 
@@ -117,19 +111,9 @@
 }
 
 
-#pragma mark - NIB Connections
+#pragma mark - Item Management
 
-- (UIView *)headerView
-{
-   if ( !_headerView ) {
-      [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
-   }
-   
-   return _headerView;
-}
-
-
-- (IBAction)addNewItem:(id)sender
+- (void)addNewItem:(id)sender
 {
    Item *newItem = [[ItemStore sharedStore] createItem];
    NSInteger lastRow = [[[ItemStore sharedStore] allItems] indexOfObject:newItem];
@@ -138,20 +122,6 @@
    [self.tableView insertRowsAtIndexPaths:@[indexPath]
                          withRowAnimation:UITableViewRowAnimationTop];
 }
-
-
-- (IBAction)toggleEditingMode:(id)sender
-{
-   if (self.isEditing) {
-      [sender setTitle:@"Edit" forState:UIControlStateNormal];
-      [self setEditing:NO animated:YES];
-   }
-   else {
-      [sender setTitle:@"Done" forState:UIControlStateNormal];
-      [self setEditing:YES animated:YES];
-   }
-}
-
 
 
 @end
