@@ -106,6 +106,21 @@
 }
 
 
+#pragma mark - Table View Delegate
+
+- (NSIndexPath *)tableView:(UITableView *)tableView
+   targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+   toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+   if ( proposedDestinationIndexPath.row == [[[ItemStore sharedStore] allItems] count] ) {
+      return sourceIndexPath;
+   }
+   else {
+      return proposedDestinationIndexPath;
+   }
+}
+
+
 #pragma mark - NIB Connections
 
 - (UIView *)headerView
