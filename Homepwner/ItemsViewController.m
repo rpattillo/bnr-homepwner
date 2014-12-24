@@ -9,6 +9,7 @@
 #import "ItemsViewController.h"
 #import "ItemStore.h"
 #import "Item.h"
+#import "DetailViewController.h"
 
 @interface ItemsViewController()
 
@@ -25,7 +26,14 @@
 {
    self = [super initWithStyle:UITableViewStylePlain];
    if (self) {
-
+      UINavigationItem *navItem = self.navigationItem;
+      navItem.title = @"Homepwner";
+      UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]
+                                        initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                        target:self
+                                        action:@selector(addNewItem:)];
+      navItem.rightBarButtonItem = barButtonItem;
+      navItem.leftBarButtonItem = self.editButtonItem;
    }
 
    return self;
@@ -49,6 +57,14 @@
    
    UIView *header = self.headerView;
    [self.tableView setTableHeaderView:header];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+   [super viewWillAppear:animated];
+   
+   [self.tableView reloadData];
 }
 
 
@@ -87,6 +103,17 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
    [[ItemStore sharedStore] moveItemAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
+}
+
+
+#pragma mark - Table View Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   DetailViewController *detailVC = [[DetailViewController alloc] init];
+   NSArray *items = [[ItemStore sharedStore] allItems];
+   detailVC.item = items[indexPath.row];
+   [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 

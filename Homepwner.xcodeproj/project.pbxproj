@@ -17,6 +17,8 @@
 		9C346A711A4661F7009AFAA6 /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C346A701A4661F7009AFAA6 /* ItemsViewController.m */; };
 		9C346A741A467192009AFAA6 /* ItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C346A731A467192009AFAA6 /* ItemStore.m */; };
 		9C3A12AD1A4903FF005650C0 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C3A12AC1A4903FF005650C0 /* HeaderView.xib */; };
+		9C3A12B11A4B521A005650C0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A12AF1A4B521A005650C0 /* DetailViewController.m */; };
+		9C3A12B21A4B521A005650C0 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C3A12B01A4B521A005650C0 /* DetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,9 @@
 		9C346A721A467192009AFAA6 /* ItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemStore.h; sourceTree = "<group>"; };
 		9C346A731A467192009AFAA6 /* ItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemStore.m; sourceTree = "<group>"; };
 		9C3A12AC1A4903FF005650C0 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		9C3A12AE1A4B521A005650C0 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		9C3A12AF1A4B521A005650C0 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		9C3A12B01A4B521A005650C0 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +97,9 @@
 			children = (
 				9C346A4A1A465AF4009AFAA6 /* AppDelegate.h */,
 				9C346A4B1A465AF4009AFAA6 /* AppDelegate.m */,
+				9C3A12AE1A4B521A005650C0 /* DetailViewController.h */,
+				9C3A12AF1A4B521A005650C0 /* DetailViewController.m */,
+				9C3A12B01A4B521A005650C0 /* DetailViewController.xib */,
 				9C346A531A465AF4009AFAA6 /* Images.xcassets */,
 				9C346A6C1A466012009AFAA6 /* Item.h */,
 				9C346A6D1A466012009AFAA6 /* Item.m */,
@@ -217,6 +225,7 @@
 				9C3A12AD1A4903FF005650C0 /* HeaderView.xib in Resources */,
 				9C346A571A465AF4009AFAA6 /* LaunchScreen.xib in Resources */,
 				9C346A541A465AF4009AFAA6 /* Images.xcassets in Resources */,
+				9C3A12B21A4B521A005650C0 /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +249,7 @@
 				9C346A4F1A465AF4009AFAA6 /* ViewController.m in Sources */,
 				9C346A4C1A465AF4009AFAA6 /* AppDelegate.m in Sources */,
 				9C346A491A465AF4009AFAA6 /* main.m in Sources */,
+				9C3A12B11A4B521A005650C0 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
