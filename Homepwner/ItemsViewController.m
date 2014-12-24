@@ -13,7 +13,6 @@
 @interface ItemsViewController()
 
 @property (nonatomic, strong) IBOutlet UIView *headerView;
-@property (nonatomic, strong) UITableViewRowAction *deleteAction;
 
 @end
 
@@ -48,23 +47,6 @@
    }
 
    return _headerView;
-}
-
-
-- (UITableViewRowAction *)deleteAction
-{
-   if ( !_deleteAction ) {
-      self.deleteAction =
-         [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive
-                                            title:@"Remove"
-                                          handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-                                             [self tableView:self.tableView
-                                          commitEditingStyle:UITableViewCellEditingStyleDelete
-                                           forRowAtIndexPath:indexPath];
-                                          }];
-   }
-
-   return _deleteAction;
 }
 
 
@@ -122,9 +104,9 @@
 
 #pragma mark - Table View Delegate
 
-- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   return @[self.deleteAction];
+   return @"Remove";
 }
 
 
