@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "DateViewController.h"
 #import "Item.h"
 
 @interface DetailViewController ()
@@ -68,6 +69,14 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
    [self.view endEditing:YES];
+}
+
+
+- (IBAction)changeDate:(id)sender
+{
+   DateViewController *dateVC = [[DateViewController alloc] init];
+   dateVC.item = self.item;
+   [self.navigationController pushViewController:dateVC animated:YES];
 }
 
 @end
