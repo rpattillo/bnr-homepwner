@@ -43,8 +43,11 @@
    [super viewWillAppear:animated];
    
    Item *item = self.item;
+   
    self.nameField.text = item.itemName;
+   
    self.serialNumberField.text = item.serialNumber;
+   
    self.valueField.text = [NSString stringWithFormat:@"%d", item.valueInDollars];
 
    static NSDateFormatter *dateFormatter = nil;
@@ -54,6 +57,10 @@
       dateFormatter.timeStyle = NSDateFormatterNoStyle;
    }
    self.dateLabel.text = [dateFormatter stringFromDate:item.dateCreated];
+   
+   NSString *itemKey = item.itemKey;
+   UIImage *imageToDisplay = [[ImageStore sharedStore] imageForKey:itemKey];
+   self.imageView.image = imageToDisplay;
 }
 
 
