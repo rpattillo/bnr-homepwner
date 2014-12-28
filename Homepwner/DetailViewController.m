@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *deleteImageButton;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
 @end
@@ -62,6 +63,13 @@
    NSString *itemKey = item.itemKey;
    UIImage *imageToDisplay = [[ImageStore sharedStore] imageForKey:itemKey];
    self.imageView.image = imageToDisplay;
+   if (imageToDisplay) {
+
+      self.deleteImageButton.hidden = NO;
+   }
+   else {
+      self.deleteImageButton.hidden = YES;
+   }
 }
 
 
@@ -92,6 +100,14 @@
    imagePicker.delegate = self;
    
    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+
+- (IBAction)deletePhoto:(id)sender
+{
+   [[ImageStore sharedStore] deleteImageForKey:self.item.itemKey];
+   self.imageView.image = nil;
+   self.deleteImageButton.hidden = YES;
 }
 
 
