@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "Item.h"
+#import "ImageStore.h"
 
 @interface DetailViewController ()
    <UINavigationControllerDelegate,
@@ -91,6 +92,9 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
    UIImage *image = info[UIImagePickerControllerOriginalImage];
+   
+   [[ImageStore sharedStore] setImage:image forKey:self.item.itemKey];
+   
    self.imageView.image = image;
    [self dismissViewControllerAnimated:YES completion:nil];
 }
