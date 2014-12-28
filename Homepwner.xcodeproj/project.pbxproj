@@ -19,6 +19,7 @@
 		9C3A12B11A4B521A005650C0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A12AF1A4B521A005650C0 /* DetailViewController.m */; };
 		9C3A12B21A4B521A005650C0 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C3A12B01A4B521A005650C0 /* DetailViewController.xib */; };
 		9C5C696F1A4F2854007046CD /* ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C696E1A4F2854007046CD /* ImageStore.m */; };
+		9C5C69721A5095C5007046CD /* CrosshairView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C69711A5095C5007046CD /* CrosshairView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		9C3A12B01A4B521A005650C0 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		9C5C696D1A4F2854007046CD /* ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageStore.h; sourceTree = "<group>"; };
 		9C5C696E1A4F2854007046CD /* ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageStore.m; sourceTree = "<group>"; };
+		9C5C69701A5095C5007046CD /* CrosshairView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrosshairView.h; sourceTree = "<group>"; };
+		9C5C69711A5095C5007046CD /* CrosshairView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrosshairView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 				9C346A4B1A465AF4009AFAA6 /* AppDelegate.m */,
 				9C3A12AE1A4B521A005650C0 /* DetailViewController.h */,
 				9C3A12AF1A4B521A005650C0 /* DetailViewController.m */,
+				9C5C69701A5095C5007046CD /* CrosshairView.h */,
+				9C5C69711A5095C5007046CD /* CrosshairView.m */,
 				9C5C696D1A4F2854007046CD /* ImageStore.h */,
 				9C5C696E1A4F2854007046CD /* ImageStore.m */,
 				9C3A12B01A4B521A005650C0 /* DetailViewController.xib */,
@@ -250,6 +255,7 @@
 				9C346A4F1A465AF4009AFAA6 /* ViewController.m in Sources */,
 				9C346A4C1A465AF4009AFAA6 /* AppDelegate.m in Sources */,
 				9C346A491A465AF4009AFAA6 /* main.m in Sources */,
+				9C5C69721A5095C5007046CD /* CrosshairView.m in Sources */,
 				9C3A12B11A4B521A005650C0 /* DetailViewController.m in Sources */,
 				9C5C696F1A4F2854007046CD /* ImageStore.m in Sources */,
 			);

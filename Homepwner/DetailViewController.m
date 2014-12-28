@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "Item.h"
 #import "ImageStore.h"
+#import "CrosshairView.h"
 
 @interface DetailViewController ()
    <UINavigationControllerDelegate,
@@ -88,6 +89,15 @@
    else {
       imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
    }
+   
+   CGRect screenBounds = [[UIScreen mainScreen] bounds];
+   CGSize crossHairSize = CGSizeMake(20.0, 20.0);
+   CGFloat x = screenBounds.size.width / 2.0 - crossHairSize.width / 2.0;
+   CGFloat y = screenBounds.size.height / 2.0 - crossHairSize.height / 2.0;
+   CGRect crossHairFrame = CGRectMake(x, y, crossHairSize.width, crossHairSize.height);
+   CrosshairView *overlay = [[CrosshairView alloc] initWithFrame:crossHairFrame];
+   imagePicker.cameraOverlayView = overlay;
+   
    
    imagePicker.delegate = self;
    
