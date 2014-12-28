@@ -12,7 +12,8 @@
 
 @interface DetailViewController ()
    <UINavigationControllerDelegate,
-   UIImagePickerControllerDelegate>
+   UIImagePickerControllerDelegate,
+   UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
@@ -94,6 +95,12 @@
 }
 
 
+- (IBAction)backgroundTapped:(id)sender
+{
+   [self.view endEditing:YES];
+}
+
+
 #pragma mark - Image Picker Controller delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -104,6 +111,16 @@
    
    self.imageView.image = image;
    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - Text Field delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+   [textField resignFirstResponder];
+   
+   return YES;
 }
 
 @end
