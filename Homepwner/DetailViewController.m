@@ -39,6 +39,43 @@
 
 #pragma mark - View life cycle
 
+- (void)viewDidLoad
+{
+   [super viewDidLoad];
+   
+   UIImageView *imageView = [[UIImageView alloc] initWithImage:nil];
+   [self.view addSubview:imageView];
+   self.imageView = imageView;
+   
+   imageView.contentMode = UIViewContentModeScaleAspectFit;
+   imageView.translatesAutoresizingMaskIntoConstraints = NO;
+   [imageView setContentHuggingPriority:200
+                                forAxis:UILayoutConstraintAxisVertical];
+   [imageView setContentCompressionResistancePriority:700
+                                              forAxis:UILayoutConstraintAxisVertical];
+
+   
+   NSDictionary *horizontalNameMap = @{@"imageView": imageView};
+   NSArray *horizontalConstraints =
+      [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|"
+                                              options:0
+                                              metrics:nil
+                                                views:horizontalNameMap];
+   [self.view addConstraints:horizontalConstraints];
+   
+   
+   NSDictionary *verticalNameMap = @{@"imageView": imageView,
+                                      @"dateLabel": self.dateLabel,
+                                      @"toolbar": self.toolbar};
+   NSArray *verticalConstraints =
+      [NSLayoutConstraint constraintsWithVisualFormat:@"V:[dateLabel]-[imageView]-[toolbar]"
+                                              options:0
+                                              metrics:nil
+                                                views:verticalNameMap];
+   [self.view addConstraints:verticalConstraints];
+}
+
+
 - (void)viewWillAppear:(BOOL)animated
 {
    [super viewWillAppear:animated];
