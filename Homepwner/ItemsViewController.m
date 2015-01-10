@@ -104,7 +104,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   DetailViewController *detailVC = [[DetailViewController alloc] init];
+   DetailViewController *detailVC = [[DetailViewController alloc] initForNewItem:NO];
    NSArray *items = [[ItemStore sharedStore] allItems];
    detailVC.item = items[indexPath.row];
    [self.navigationController pushViewController:detailVC animated:YES];
@@ -116,11 +116,17 @@
 - (void)addNewItem:(id)sender
 {
    Item *newItem = [[ItemStore sharedStore] createItem];
-   NSInteger lastRow = [[[ItemStore sharedStore] allItems] indexOfObject:newItem];
-   NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
-   
-   [self.tableView insertRowsAtIndexPaths:@[indexPath]
-                         withRowAnimation:UITableViewRowAnimationTop];
+
+   DetailViewController *detailVC = [[DetailViewController alloc] initForNewItem:YES];
+   detailVC.item = newItem;
+   detailVC.dismissBlock = ^{
+      [self.tableView reloadData];
+   };
+   UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:detailVC];
+   navVC.modalPresentationStyle = UIModalPresentationFormSheet;
+
+   [self presentViewController:navVC animated:YES completion:nil];
+
 }
 
 

@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "Item.h"
 #import "ImageStore.h"
+#import "ItemStore.h"
 
 @interface DetailViewController ()
    <UINavigationControllerDelegate,
@@ -30,6 +31,41 @@
 
 
 @implementation DetailViewController
+
+#pragma mark - Initializers
+
+- (instancetype)initForNewItem:(BOOL)isNew
+{
+   self = [super initWithNibName:nil bundle:nil];
+   
+   if (self) {
+      if (isNew) {
+         UIBarButtonItem *doneItem =
+            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                          target:self
+                                                          action:@selector(save:)];
+         self.navigationItem.rightBarButtonItem = doneItem;
+         
+         UIBarButtonItem *cancelItem =
+         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                       target:self
+                                                       action:@selector(cancel:)];
+         self.navigationItem.leftBarButtonItem = cancelItem;
+      }
+   }
+   
+   return self;
+}
+
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+   @throw [NSException exceptionWithName:@"Wrong Initializer"
+                                  reason:@"Use initForNewItem:"
+                                userInfo:nil];
+   return nil;
+}
+
 
 #pragma mark - Accessors
 
@@ -188,6 +224,21 @@
 {
    [self.view endEditing:YES];
 }
+
+
+- (void)save:(id)sender
+{
+   [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
+}
+
+
+- (void)cancel:(id)sender
+{
+   [[ItemStore sharedStore] removeItem:self.item];
+
+   [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
+}
+
 
 
 #pragma mark - Image Picker Controller delegate
