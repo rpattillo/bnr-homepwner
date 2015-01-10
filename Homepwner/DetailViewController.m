@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 
 @end
 
@@ -34,6 +35,14 @@
 {
    _item = item;
    self.navigationItem.title = _item.itemName;
+}
+
+#pragma mark - Interface Adjustments
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                         duration:(NSTimeInterval)duration
+{
+   [self prepareViewsForOrientation:toInterfaceOrientation];
 }
 
 
@@ -80,6 +89,9 @@
 {
    [super viewWillAppear:animated];
    
+   UIInterfaceOrientation io = [[UIApplication sharedApplication] statusBarOrientation];
+   [self prepareViewsForOrientation:io];
+   
    Item *item = self.item;
    
    self.nameField.text = item.itemName;
@@ -113,7 +125,26 @@
 }
 
 
-#pragma mark - NIB connections
+#pragma mark - Private view adjustment methods
+
+- (void)prepareViewsForOrientation:(UIInterfaceOrientation)orientation
+{
+   if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+      return;
+   }
+   
+   if (UIInterfaceOrientationIsLandscape(orientation)) {
+      self.imageView.hidden = YES;
+      self.cameraButton.enabled = NO;
+   }
+   else {
+      self.imageView.hidden = NO;
+      self.cameraButton.enabled = YES;
+   }
+}
+
+
+#pragma mark - NIB connections and Actions
 
 - (IBAction)takePicture:(id)sender
 {

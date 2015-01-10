@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
             <connections>
+                <outlet property="cameraButton" destination="509-VJ-A3s" id="jZF-uy-R6d"/>
                 <outlet property="dateLabel" destination="PYZ-Z6-SPp" id="QH2-Sg-ZdW"/>
                 <outlet property="nameField" destination="MQR-dS-0aq" id="YTf-jX-exQ"/>
                 <outlet property="serialNumberField" destination="6DI-3S-Uho" id="a6o-Uu-ymP"/>
