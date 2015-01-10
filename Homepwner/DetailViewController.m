@@ -13,8 +13,10 @@
 @interface DetailViewController ()
    <UINavigationControllerDelegate,
    UIImagePickerControllerDelegate,
-   UITextFieldDelegate>
+   UITextFieldDelegate,
+   UIPopoverControllerDelegate>
 
+@property (strong, nonatomic) UIPopoverController *imagePickerPopover;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
@@ -148,6 +150,16 @@
 
 - (IBAction)takePicture:(id)sender
 {
+   // This if-statement and the code it contains
+   // does not seem to be necessary in iOS 8.  Tapping the camera button
+   // does not send this action when the popover is visible in iOS 8, which
+   // is a change from iOS 7.
+   if ([self.imagePickerPopover isPopoverVisible]) {
+      [self.imagePickerPopover dismissPopoverAnimated:YES];
+      self.imagePickerPopover = nil;
+      return;
+   }
+   
    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
    
    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -159,7 +171,16 @@
    
    imagePicker.delegate = self;
    
-   [self presentViewController:imagePicker animated:YES completion:nil];
+   if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+      self.imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
+      self.imagePickerPopover.delegate = self;
+      [self.imagePickerPopover presentPopoverFromBarButtonItem:sender
+                                      permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                      animated:YES];
+   }
+   else {
+      [self presentViewController:imagePicker animated:YES completion:nil];
+   }
 }
 
 
@@ -178,7 +199,15 @@
    [[ImageStore sharedStore] setImage:image forKey:self.item.itemKey];
    
    self.imageView.image = image;
-   [self dismissViewControllerAnimated:YES completion:nil];
+   
+   if (self.imagePickerPopover) {
+      [self.imagePickerPopover dismissPopoverAnimated:YES];
+      self.imagePickerPopover = nil;
+   }
+   else {
+      [self dismissViewControllerAnimated:YES completion:nil];
+   }
+   
 }
 
 
@@ -189,6 +218,15 @@
    [textField resignFirstResponder];
    
    return YES;
+}
+
+
+#pragma mark - Popover Controller delegate
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+   NSLog(@"User dismissed popover");
+   self.imagePickerPopover = nil;
 }
 
 @end
