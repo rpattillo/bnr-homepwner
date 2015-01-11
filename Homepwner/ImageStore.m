@@ -53,17 +53,35 @@
 }
 
 
-#pragma mark - Store management
+#pragma mark - Image management
 
 - (void)setImage:(UIImage *)image forKey:(NSString *)key
 {
    self.dictionary[key] = image;
+
+   NSData *data = UIImageJPEGRepresentation(image, 0.5);
+   NSString *imagePath = [self imagePathForKey:key];
+   [data writeToFile:imagePath atomically:YES];
 }
 
 
 - (UIImage *)imageForKey:(NSString *)key
 {
-   return self.dictionary[key];
+   UIImage *image = self.dictionary[key];
+
+   if (!image) {
+      NSString *imagePath = [self imagePathForKey:key];
+      image = [UIImage imageWithContentsOfFile:imagePath];
+
+      if (image) {
+         self.dictionary[key] = image;
+      }
+      else {
+         NSLog(@"Error: unable to find %@", imagePath);
+      }
+   }
+
+   return image;
 }
 
 
@@ -73,6 +91,20 @@
       return;
    }
    [self.dictionary removeObjectForKey:key];
+
+   NSString *imagePath = [self imagePathForKey:key];
+   [[NSFileManager defaultManager] removeItemAtPath:imagePath error:nil];
+}
+
+#pragma mark - Private image management
+
+- (NSString *)imagePathForKey:(NSString *)key
+{
+   NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                      NSUserDomainMask,
+                                                                      YES);
+   NSString *documentDirectory = [documentDirectories firstObject];
+   return [documentDirectory stringByAppendingPathComponent:key];
 }
 
 
