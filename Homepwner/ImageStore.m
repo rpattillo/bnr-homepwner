@@ -65,7 +65,7 @@
 {
    self.dictionary[key] = image;
 
-   NSData *data = UIImageJPEGRepresentation(image, 0.5);
+   NSData *data = UIImagePNGRepresentation(image);
    NSString *imagePath = [self imagePathForKey:key];
    [data writeToFile:imagePath atomically:YES];
 }
