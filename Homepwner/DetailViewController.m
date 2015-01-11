@@ -77,10 +77,12 @@
 
 #pragma mark - Interface Adjustments
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                                         duration:(NSTimeInterval)duration
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection
+              withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
-   [self prepareViewsForOrientation:toInterfaceOrientation];
+   [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
+
+   [self prepareViewsForTraits:newCollection];
 }
 
 
@@ -127,8 +129,7 @@
 {
    [super viewWillAppear:animated];
    
-   UIInterfaceOrientation io = [[UIApplication sharedApplication] statusBarOrientation];
-   [self prepareViewsForOrientation:io];
+   [self prepareViewsForTraits:self.traitCollection];
    
    Item *item = self.item;
    
@@ -165,13 +166,9 @@
 
 #pragma mark - Private view adjustment methods
 
-- (void)prepareViewsForOrientation:(UIInterfaceOrientation)orientation
+- (void)prepareViewsForTraits:(UITraitCollection *)collection
 {
-   if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-      return;
-   }
-   
-   if (UIInterfaceOrientationIsLandscape(orientation)) {
+   if ([collection verticalSizeClass] == UIUserInterfaceSizeClassCompact) {
       self.imageView.hidden = YES;
       self.cameraButton.enabled = NO;
    }
