@@ -72,7 +72,36 @@
 }
 
 
-#pragma mark - Overrides
+#pragma mark - Item specific public interface
+
+- (void)setThumbnailFromImage:(UIImage *)image
+{
+   CGRect newRect = CGRectMake(0, 0, 40, 40);
+
+   UIGraphicsBeginImageContextWithOptions(newRect.size, NO, 0.0);
+
+   UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:newRect cornerRadius:5.0];
+   [path addClip];
+
+   CGSize origImageSize = image.size;
+   float ratio = MAX(newRect.size.width / origImageSize.width,
+                     newRect.size.height / origImageSize.height);
+   CGRect projectRect;
+   projectRect.size.width = ratio * origImageSize.width;
+   projectRect.size.height = ratio * origImageSize.height;
+   projectRect.origin.x = (newRect.size.width - projectRect.size.width) / 2.0;
+   projectRect.origin.y = (newRect.size.height - projectRect.size.height) / 2.0;
+
+   [image drawInRect:projectRect];
+
+   UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+   self.thumbnail = smallImage;
+
+   UIGraphicsEndImageContext();
+}
+
+
+#pragma mark - NSObject Overrides
 
 - (NSString *)description
 {
@@ -101,6 +130,7 @@
       _serialNumber = [aDecoder decodeObjectForKey:@"serialNumber"];
       _dateCreated = [aDecoder decodeObjectForKey:@"dateCreated"];
       _itemKey = [aDecoder decodeObjectForKey:@"itemKey"];
+      _thumbnail = [aDecoder decodeObjectForKey:@"thumbnail"];
 
       _valueInDollars = [aDecoder decodeIntForKey:@"valueInDollars"];
    }
@@ -115,6 +145,7 @@
    [aCoder encodeObject:self.serialNumber forKey:@"serialNumber"];
    [aCoder encodeObject:self.dateCreated forKey:@"dateCreated"];
    [aCoder encodeObject:self.itemKey forKey:@"itemKey"];
+   [aCoder encodeObject:self.thumbnail forKey:@"thumbnail"];
 
    [aCoder encodeInt:self.valueInDollars forKey:@"valueInDollars"];
 }
