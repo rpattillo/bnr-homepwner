@@ -10,6 +10,7 @@
 #import "ItemStore.h"
 #import "Item.h"
 #import "DetailViewController.h"
+#import "ItemCell.h"
 
 @interface ItemsViewController()
 @end
@@ -49,8 +50,8 @@
 {
    [super viewDidLoad];
    
-   [self.tableView registerClass:[UITableViewCell class]
-          forCellReuseIdentifier:@"UITableViewCell"];
+   UINib *itemCellNib = [UINib nibWithNibName:@"ItemCell" bundle:nil];
+   [self.tableView registerNib:itemCellNib forCellReuseIdentifier:@"ItemCell"];
 }
 
 
@@ -72,12 +73,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
    NSArray *items = [[ItemStore sharedStore] allItems];
    Item *item = items[indexPath.row];
-   
-   cell.textLabel.text = item.description;
-   
+
+   ItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItemCell"
+                                                    forIndexPath:indexPath];
+   cell.nameLabel.text = item.itemName;
+   cell.serialNumberLabel.text = item.serialNumber;
+   cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+   cell.imageView.image = item.thumbnail;
+
    return cell;
 }
 

@@ -19,6 +19,8 @@
 		9C3A12B11A4B521A005650C0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A12AF1A4B521A005650C0 /* DetailViewController.m */; };
 		9C3A12B21A4B521A005650C0 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C3A12B01A4B521A005650C0 /* DetailViewController.xib */; };
 		9C5C696F1A4F2854007046CD /* ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C696E1A4F2854007046CD /* ImageStore.m */; };
+		9CE0D0E71A64901D00FD6705 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0D0E61A64901D00FD6705 /* ItemCell.m */; };
+		9CE0D0E91A64907400FD6705 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CE0D0E81A64907300FD6705 /* ItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,9 @@
 		9C3A12B01A4B521A005650C0 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		9C5C696D1A4F2854007046CD /* ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageStore.h; sourceTree = "<group>"; };
 		9C5C696E1A4F2854007046CD /* ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageStore.m; sourceTree = "<group>"; };
+		9CE0D0E51A64901D00FD6705 /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
+		9CE0D0E61A64901D00FD6705 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
+		9CE0D0E81A64907300FD6705 /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +111,9 @@
 				9C5C696E1A4F2854007046CD /* ImageStore.m */,
 				9C346A6C1A466012009AFAA6 /* Item.h */,
 				9C346A6D1A466012009AFAA6 /* Item.m */,
+				9CE0D0E51A64901D00FD6705 /* ItemCell.h */,
+				9CE0D0E61A64901D00FD6705 /* ItemCell.m */,
+				9CE0D0E81A64907300FD6705 /* ItemCell.xib */,
 				9C346A721A467192009AFAA6 /* ItemStore.h */,
 				9C346A731A467192009AFAA6 /* ItemStore.m */,
 				9C346A6F1A4661F7009AFAA6 /* ItemsViewController.h */,
@@ -224,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CE0D0E91A64907400FD6705 /* ItemCell.xib in Resources */,
 				9C346A571A465AF4009AFAA6 /* LaunchScreen.xib in Resources */,
 				9C346A541A465AF4009AFAA6 /* Images.xcassets in Resources */,
 				9C3A12B21A4B521A005650C0 /* DetailViewController.xib in Resources */,
@@ -244,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CE0D0E71A64901D00FD6705 /* ItemCell.m in Sources */,
 				9C346A711A4661F7009AFAA6 /* ItemsViewController.m in Sources */,
 				9C346A6E1A466012009AFAA6 /* Item.m in Sources */,
 				9C346A741A467192009AFAA6 /* ItemStore.m in Sources */,
