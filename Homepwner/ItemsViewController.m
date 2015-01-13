@@ -11,8 +11,13 @@
 #import "Item.h"
 #import "DetailViewController.h"
 #import "ItemCell.h"
+#import "ImageStore.h"
+#import "ImageViewController.h"
 
-@interface ItemsViewController()
+@interface ItemsViewController() <UIPopoverControllerDelegate>
+
+@property (nonatomic, strong) UIPopoverController *imagePopover;
+
 @end
 
 
@@ -83,6 +88,35 @@
    cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
    cell.thumbnailView.image = item.thumbnail;
 
+   __weak ItemCell *weakCell = cell;
+   cell.actionBlock = ^{
+      NSLog(@"Going to show image for %@", item);
+
+      ItemCell *strongCell = weakCell;
+
+      if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+         NSString *itemKey = item.itemKey;
+         UIImage *image = [[ImageStore sharedStore] imageForKey:itemKey];
+
+         if (!image) {
+            return;
+         }
+
+         CGRect rect = [self.view convertRect:strongCell.thumbnailView.bounds
+                                     fromView:strongCell.thumbnailView];
+         ImageViewController *imageVC = [[ImageViewController alloc] init];
+         imageVC.image = image;
+
+         self.imagePopover = [[UIPopoverController alloc] initWithContentViewController:imageVC];
+         self.imagePopover.delegate = self;
+         self.imagePopover.popoverContentSize = CGSizeMake(600, 600);
+         [self.imagePopover presentPopoverFromRect:rect
+                                            inView:self.view
+                          permittedArrowDirections:UIPopoverArrowDirectionAny
+                                          animated:YES];
+      }
+   };
+
    return cell;
 }
 
@@ -134,5 +168,12 @@
 
 }
 
+
+#pragma mark - Popover Controller delegate
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+   self.imagePopover = nil;
+}
 
 @end

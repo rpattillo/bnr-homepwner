@@ -35,6 +35,15 @@
                             <constraint firstAttribute="width" constant="40" id="UrP-83-UPR"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKd-V6-aWW">
+                        <rect key="frame" x="9" y="2" width="40" height="40"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="showImage:" destination="4JU-yk-J9Z" eventType="touchUpInside" id="ys7-N6-1EK"/>
+                        </connections>
+                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serial" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cC9-jt-22r">
                         <rect key="frame" x="57" y="23" width="205" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -44,7 +53,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="5uF-Q0-GSy" firstAttribute="leading" secondItem="Gb4-ll-yIr" secondAttribute="trailing" constant="8" id="6RV-Be-s1T"/>
+                    <constraint firstItem="oxd-gd-Dh2" firstAttribute="leading" secondItem="BKd-V6-aWW" secondAttribute="leading" id="6e6-pi-cd2"/>
                     <constraint firstItem="Gb4-ll-yIr" firstAttribute="top" secondItem="X4N-fO-kre" secondAttribute="topMargin" constant="-8" id="BGE-Jd-QZ4"/>
+                    <constraint firstItem="oxd-gd-Dh2" firstAttribute="top" secondItem="BKd-V6-aWW" secondAttribute="top" id="EHj-oR-Wkb"/>
                     <constraint firstItem="Gb4-ll-yIr" firstAttribute="leading" secondItem="oxd-gd-Dh2" secondAttribute="trailing" constant="8" id="EdY-Y8-fyH"/>
                     <constraint firstItem="cC9-jt-22r" firstAttribute="bottom" secondItem="X4N-fO-kre" secondAttribute="bottomMargin" id="Je4-7X-GrN"/>
                     <constraint firstItem="5uF-Q0-GSy" firstAttribute="leading" secondItem="cC9-jt-22r" secondAttribute="trailing" constant="8" id="MdP-vT-PaT"/>
@@ -53,9 +64,11 @@
                     <constraint firstItem="cC9-jt-22r" firstAttribute="leading" secondItem="oxd-gd-Dh2" secondAttribute="trailing" constant="8" id="Pz0-cL-VFz"/>
                     <constraint firstAttribute="centerY" secondItem="5uF-Q0-GSy" secondAttribute="centerY" id="WJP-Fx-Moq"/>
                     <constraint firstItem="oxd-gd-Dh2" firstAttribute="leading" secondItem="X4N-fO-kre" secondAttribute="leadingMargin" constant="1" id="e2w-He-avC"/>
+                    <constraint firstItem="oxd-gd-Dh2" firstAttribute="bottom" secondItem="BKd-V6-aWW" secondAttribute="bottom" id="jd3-pH-3uq"/>
                     <constraint firstAttribute="centerY" secondItem="oxd-gd-Dh2" secondAttribute="centerY" constant="-0.5" id="pz4-aB-Jr0"/>
                     <constraint firstAttribute="centerX" secondItem="5uF-Q0-GSy" secondAttribute="centerX" constant="-131" id="qkf-nd-6xp"/>
                     <constraint firstAttribute="centerX" secondItem="5uF-Q0-GSy" secondAttribute="centerX" constant="-131" id="wz4-pA-9Je"/>
+                    <constraint firstItem="oxd-gd-Dh2" firstAttribute="trailing" secondItem="BKd-V6-aWW" secondAttribute="trailing" id="zs8-2t-Hg5"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

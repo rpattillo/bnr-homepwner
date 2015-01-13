@@ -21,6 +21,7 @@
 		9C5C696F1A4F2854007046CD /* ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C696E1A4F2854007046CD /* ImageStore.m */; };
 		9CE0D0E71A64901D00FD6705 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0D0E61A64901D00FD6705 /* ItemCell.m */; };
 		9CE0D0E91A64907400FD6705 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CE0D0E81A64907300FD6705 /* ItemCell.xib */; };
+		9CE0D0EC1A64B2BC00FD6705 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0D0EB1A64B2BC00FD6705 /* ImageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		9CE0D0E51A64901D00FD6705 /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
 		9CE0D0E61A64901D00FD6705 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
 		9CE0D0E81A64907300FD6705 /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
+		9CE0D0EA1A64B2BC00FD6705 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		9CE0D0EB1A64B2BC00FD6705 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 				9C346A531A465AF4009AFAA6 /* Images.xcassets */,
 				9C5C696D1A4F2854007046CD /* ImageStore.h */,
 				9C5C696E1A4F2854007046CD /* ImageStore.m */,
+				9CE0D0EA1A64B2BC00FD6705 /* ImageViewController.h */,
+				9CE0D0EB1A64B2BC00FD6705 /* ImageViewController.m */,
 				9C346A6C1A466012009AFAA6 /* Item.h */,
 				9C346A6D1A466012009AFAA6 /* Item.m */,
 				9CE0D0E51A64901D00FD6705 /* ItemCell.h */,
@@ -253,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CE0D0EC1A64B2BC00FD6705 /* ImageViewController.m in Sources */,
 				9CE0D0E71A64901D00FD6705 /* ItemCell.m in Sources */,
 				9C346A711A4661F7009AFAA6 /* ItemsViewController.m in Sources */,
 				9C346A6E1A466012009AFAA6 /* Item.m in Sources */,
