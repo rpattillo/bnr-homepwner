@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9C346A491A465AF4009AFAA6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C346A481A465AF4009AFAA6 /* main.m */; };
 		9C346A4C1A465AF4009AFAA6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C346A4B1A465AF4009AFAA6 /* AppDelegate.m */; };
-		9C346A4F1A465AF4009AFAA6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C346A4E1A465AF4009AFAA6 /* ViewController.m */; };
 		9C346A541A465AF4009AFAA6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C346A531A465AF4009AFAA6 /* Images.xcassets */; };
 		9C346A571A465AF4009AFAA6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C346A551A465AF4009AFAA6 /* LaunchScreen.xib */; };
 		9C346A631A465AF4009AFAA6 /* HomepwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C346A621A465AF4009AFAA6 /* HomepwnerTests.m */; };
@@ -40,8 +39,6 @@
 		9C346A481A465AF4009AFAA6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9C346A4A1A465AF4009AFAA6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9C346A4B1A465AF4009AFAA6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9C346A4D1A465AF4009AFAA6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9C346A4E1A465AF4009AFAA6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9C346A531A465AF4009AFAA6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9C346A561A465AF4009AFAA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9C346A5C1A465AF4009AFAA6 /* HomepwnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomepwnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,8 +122,6 @@
 				9C346A701A4661F7009AFAA6 /* ItemsViewController.m */,
 				9C346A551A465AF4009AFAA6 /* LaunchScreen.xib */,
 				9C346A461A465AF4009AFAA6 /* Supporting Files */,
-				9C346A4D1A465AF4009AFAA6 /* ViewController.h */,
-				9C346A4E1A465AF4009AFAA6 /* ViewController.m */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -263,7 +258,6 @@
 				9C346A711A4661F7009AFAA6 /* ItemsViewController.m in Sources */,
 				9C346A6E1A466012009AFAA6 /* Item.m in Sources */,
 				9C346A741A467192009AFAA6 /* ItemStore.m in Sources */,
-				9C346A4F1A465AF4009AFAA6 /* ViewController.m in Sources */,
 				9C346A4C1A465AF4009AFAA6 /* AppDelegate.m in Sources */,
 				9C346A491A465AF4009AFAA6 /* main.m in Sources */,
 				9C3A12B11A4B521A005650C0 /* DetailViewController.m in Sources */,

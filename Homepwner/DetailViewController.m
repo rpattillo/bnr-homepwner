@@ -25,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *serialNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
 
 @end
 
@@ -52,6 +55,12 @@
                                                        action:@selector(cancel:)];
          self.navigationItem.leftBarButtonItem = cancelItem;
       }
+
+      NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+      [defaultCenter addObserver:self
+                        selector:@selector(updateFonts)
+                            name:UIContentSizeCategoryDidChangeNotification
+                          object:nil];
    }
    
    return self;
@@ -64,6 +73,13 @@
                                   reason:@"Use initForNewItem:"
                                 userInfo:nil];
    return nil;
+}
+
+
+- (void)dealloc
+{
+   NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+   [defaultCenter removeObserver:self];
 }
 
 
@@ -81,6 +97,21 @@
                                          duration:(NSTimeInterval)duration
 {
    [self prepareViewsForOrientation:toInterfaceOrientation];
+}
+
+
+- (void)updateFonts
+{
+   UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+
+   self.nameLabel.font = font;
+   self.serialNumberLabel.font = font;
+   self.valueLabel.font = font;
+   self.dateLabel.font = font;
+
+   self.nameField.font = font;
+   self.serialNumberField.font = font;
+   self.valueField.font = font;
 }
 
 
@@ -149,6 +180,8 @@
    NSString *itemKey = item.itemKey;
    UIImage *imageToDisplay = [[ImageStore sharedStore] imageForKey:itemKey];
    self.imageView.image = imageToDisplay;
+
+   [self updateFonts];
 }
 
 

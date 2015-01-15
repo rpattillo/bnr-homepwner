@@ -15,9 +15,6 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gb4-ll-yIr">
                         <rect key="frame" x="57" y="0.0" width="205" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="SYP-RM-xfy"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -31,7 +28,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oxd-gd-Dh2">
                         <rect key="frame" x="9" y="2" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="gpf-Ic-dat"/>
+                            <constraint firstAttribute="width" constant="40" placeholder="YES" id="gpf-Ic-dat"/>
                             <constraint firstAttribute="height" constant="40" id="hiC-Yv-NF8"/>
                         </constraints>
                     </imageView>
@@ -45,10 +42,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serial" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cC9-jt-22r">
-                        <rect key="frame" x="57" y="23" width="205" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="5CG-pu-TEp"/>
-                        </constraints>
+                        <rect key="frame" x="57" y="22" width="205" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -72,6 +66,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imageViewHeightConstraint" destination="hiC-Yv-NF8" id="aBq-dt-e5Y"/>
                 <outlet property="nameLabel" destination="Gb4-ll-yIr" id="Y4c-8Y-dEO"/>
                 <outlet property="serialNumberLabel" destination="cC9-jt-22r" id="PJr-wc-Hik"/>
                 <outlet property="thumbnailView" destination="oxd-gd-Dh2" id="5gE-th-V5Q"/>
