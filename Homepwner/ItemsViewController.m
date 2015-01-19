@@ -14,7 +14,9 @@
 #import "ImageStore.h"
 #import "ImageViewController.h"
 
-@interface ItemsViewController() <UIPopoverControllerDelegate>
+@interface ItemsViewController() <UIPopoverControllerDelegate,
+   UIViewControllerRestoration,
+   UIDataSourceModelAssociation>
 
 @property (nonatomic, strong) UIPopoverController *imagePopover;
 
@@ -22,6 +24,65 @@
 
 
 @implementation ItemsViewController
+
+#pragma mark - State Restoration
+
++ (UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents
+                                                            coder:(NSCoder *)coder
+{
+   return [[self alloc] init];
+}
+
+
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder
+{
+   [coder encodeBool:self.isEditing forKey:@"TableViewIsEditing"];
+
+   [super encodeRestorableStateWithCoder:coder];
+}
+
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder
+{
+   [coder decodeBoolForKey:@"TableViewIsEditing"];
+
+   [super decodeRestorableStateWithCoder:coder];
+}
+
+
+#pragma mark Datasource model association
+
+- (NSString *)modelIdentifierForElementAtIndexPath:(NSIndexPath *)idx inView:(UIView *)view
+{
+   NSString *identifier = nil;
+
+   if (idx && view) {
+      Item *item = [[ItemStore sharedStore] allItems][idx.row];
+      identifier = item.itemKey;
+   }
+
+   return identifier;
+}
+
+
+- (NSIndexPath *)indexPathForElementWithModelIdentifier:(NSString *)identifier inView:(UIView *)view
+{
+   NSIndexPath *indexPath = nil;
+
+   if (identifier && view) {
+      NSArray *items = [[ItemStore sharedStore] allItems];
+      for (Item *item in items) {
+         if ([identifier isEqualToString:item.itemKey]) {
+            int row = (int)[items indexOfObjectIdenticalTo:item];
+            indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+            break;
+         }
+      }
+   }
+
+   return indexPath;
+}
+
 
 #pragma mark - Initializers
 
@@ -43,6 +104,9 @@
              selector:@selector(updateTableViewForDynamicTypeSize)
                  name:UIContentSizeCategoryDidChangeNotification
                object:nil];
+
+      self.restorationIdentifier = NSStringFromClass([self class]);
+      self.restorationClass = [self class];
    }
 
    return self;
@@ -70,6 +134,8 @@
    
    UINib *itemCellNib = [UINib nibWithNibName:@"ItemCell" bundle:nil];
    [self.tableView registerNib:itemCellNib forCellReuseIdentifier:@"ItemCell"];
+
+   self.tableView.restorationIdentifier = @"ItemsViewControllerTableView";
 }
 
 
@@ -199,6 +265,7 @@
    };
    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:detailVC];
    navVC.modalPresentationStyle = UIModalPresentationFormSheet;
+   navVC.restorationIdentifier = NSStringFromClass([navVC class]);
 
    [self presentViewController:navVC animated:YES completion:nil];
 
