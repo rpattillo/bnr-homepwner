@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
             <connections>
+                <outlet property="assetTypeButton" destination="bI3-Fd-mag" id="M7S-8v-GqJ"/>
                 <outlet property="cameraButton" destination="509-VJ-A3s" id="jZF-uy-R6d"/>
                 <outlet property="dateLabel" destination="PYZ-Z6-SPp" id="QH2-Sg-ZdW"/>
                 <outlet property="nameField" destination="MQR-dS-0aq" id="YTf-jX-exQ"/>
@@ -76,6 +77,13 @@
                                 <action selector="takePicture:" destination="-1" id="CqJ-Pf-abU"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="kpL-hp-15y"/>
+                        <barButtonItem title="Item" id="bI3-Fd-mag">
+                            <connections>
+                                <action selector="showAssetTypePicker:" destination="-1" id="U1T-4h-0xg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="dny-WK-TDw"/>
                     </items>
                 </toolbar>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYZ-Z6-SPp">

@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "AssetTypeViewController.h"
 #import "Item.h"
 #import "ImageStore.h"
 #import "ItemStore.h"
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *serialNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *assetTypeButton;
 
 @end
 
@@ -181,6 +183,13 @@
    UIImage *imageToDisplay = [[ImageStore sharedStore] imageForKey:itemKey];
    self.imageView.image = imageToDisplay;
 
+   NSString *typeLabel = [self.item.assetType valueForKey:@"label"];
+   if ( !typeLabel) {
+      typeLabel = @"None";
+   }
+   self.assetTypeButton.title = [NSString stringWithFormat:@"Type: %@", typeLabel];
+
+
    [self updateFonts];
 }
 
@@ -256,6 +265,17 @@
 - (IBAction)backgroundTapped:(id)sender
 {
    [self.view endEditing:YES];
+}
+
+
+- (IBAction)showAssetTypePicker:(id)sender
+{
+   [self.view endEditing:YES];
+
+   AssetTypeViewController *assetTypeVC = [[AssetTypeViewController alloc] init];
+   assetTypeVC.item = self.item;
+
+   [self.navigationController pushViewController:assetTypeVC animated:YES];
 }
 
 

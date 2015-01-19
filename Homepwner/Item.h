@@ -1,31 +1,27 @@
 //
 //  Item.h
-//  RandomItems
+//  Homepwner
 //
-//  Created by Ricky Pattillo on 12/11/14.
-//  Copyright (c) 2014 Ricky Pattillo. All rights reserved.
+//  Created by Ricky Pattillo on 1/19/15.
+//  Copyright (c) 2015 Ricky Pattillo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
-@interface Item : NSObject <NSCoding>
 
-@property (nonatomic, copy) NSString *itemName;
-@property (nonatomic, copy) NSString *serialNumber;
-@property (nonatomic) int valueInDollars;
-@property (nonatomic, readonly, strong) NSDate *dateCreated;
+@interface Item : NSManagedObject
+
+@property (nonatomic, strong) NSString *itemName;
+@property (nonatomic, strong) NSString *serialNumber;
+@property (nonatomic, strong) NSDate *dateCreated;
 @property (nonatomic, strong) NSString *itemKey;
 @property (nonatomic, strong) UIImage *thumbnail;
 
-+ (instancetype)randomItem;
+@property (nonatomic) int valueInDollars;
+@property (nonatomic) double orderingValue;
 
-// Designated initializer for Item
-- (instancetype)initWithItemName:(NSString *)name
-                  valueInDollars:(int)value
-                    serialNumber:(NSString *)sNumber;
-
-- (instancetype)initWithItemName:(NSString *)name;
+@property (nonatomic, strong) NSManagedObject *assetType;
 
 - (void)setThumbnailFromImage:(UIImage *)image;
 
