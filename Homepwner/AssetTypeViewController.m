@@ -70,7 +70,14 @@
    NSManagedObject *assetType = allAssets[indexPath.row];
    self.item.assetType = assetType;
 
-   [self.navigationController popViewControllerAnimated:YES];
+   if (self.presentingViewController) {
+      [self.presentingViewController dismissViewControllerAnimated:YES
+                                                        completion:self.dismissBlock];
+   }
+   else {
+      [self.navigationController popViewControllerAnimated:YES];
+   }
+
 }
 
 @end

@@ -19,6 +19,8 @@
    UIPopoverControllerDelegate>
 
 @property (strong, nonatomic) UIPopoverController *imagePickerPopover;
+@property (strong, nonatomic) UIPopoverController *assetTypePopover;
+
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
@@ -250,7 +252,8 @@
    imagePicker.delegate = self;
    
    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-      self.imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
+      self.imagePickerPopover = [[UIPopoverController alloc]
+                                 initWithContentViewController:imagePicker];
       self.imagePickerPopover.delegate = self;
       [self.imagePickerPopover presentPopoverFromBarButtonItem:sender
                                       permittedArrowDirections:UIPopoverArrowDirectionAny
@@ -275,7 +278,25 @@
    AssetTypeViewController *assetTypeVC = [[AssetTypeViewController alloc] init];
    assetTypeVC.item = self.item;
 
-   [self.navigationController pushViewController:assetTypeVC animated:YES];
+   if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+      assetTypeVC.dismissBlock = ^{
+         NSString *typeLabel = [self.item.assetType valueForKey:@"label"];
+         if ( !typeLabel) {
+            typeLabel = @"None";
+         }
+         self.assetTypeButton.title = [NSString stringWithFormat:@"Type: %@", typeLabel];
+      };
+
+      self.assetTypePopover = [[UIPopoverController alloc]
+                               initWithContentViewController:assetTypeVC];
+      self.assetTypePopover.delegate = self;
+      [self.assetTypePopover presentPopoverFromBarButtonItem:self.assetTypeButton
+                                    permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                    animated:YES];
+   }
+   else {
+      [self.navigationController pushViewController:assetTypeVC animated:YES];
+   }
 }
 
 
@@ -331,7 +352,12 @@
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
    NSLog(@"User dismissed popover");
-   self.imagePickerPopover = nil;
+   if (popoverController == self.imagePickerPopover) {
+      self.imagePickerPopover = nil;
+   }
+   else if ( popoverController == self.assetTypePopover) {
+      self.assetTypePopover = nil;
+   }
 }
 
 @end

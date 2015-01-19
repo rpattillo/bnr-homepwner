@@ -13,5 +13,6 @@
 @interface AssetTypeViewController : UITableViewController
 
 @property (nonatomic, strong) Item *item;
+@property (nonatomic, copy) void (^dismissBlock)(void);
 
 @end
