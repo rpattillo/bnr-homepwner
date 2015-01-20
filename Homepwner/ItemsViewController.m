@@ -91,7 +91,7 @@
    self = [super initWithStyle:UITableViewStylePlain];
    if (self) {
       UINavigationItem *navItem = self.navigationItem;
-      navItem.title = @"Homepwner";
+      navItem.title = NSLocalizedString(@"Homepwner", @"Name of application");
       UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]
                                         initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                         target:self
@@ -103,6 +103,10 @@
       [nc addObserver:self
              selector:@selector(updateTableViewForDynamicTypeSize)
                  name:UIContentSizeCategoryDidChangeNotification
+               object:nil];
+      [nc addObserver:self
+             selector:@selector(localeChanged)
+                 name:NSCurrentLocaleDidChangeNotification
                object:nil];
 
       self.restorationIdentifier = NSStringFromClass([self class]);
@@ -170,6 +174,12 @@
 }
 
 
+- (void)localeChanged
+{
+   [self.tableView reloadData];
+}
+
+
 #pragma mark - Table View Datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -187,7 +197,14 @@
                                                     forIndexPath:indexPath];
    cell.nameLabel.text = item.itemName;
    cell.serialNumberLabel.text = item.serialNumber;
-   cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+
+   static NSNumberFormatter *currencyFormatter = nil;
+   if (!currencyFormatter) {
+      currencyFormatter = [[NSNumberFormatter alloc] init];
+      currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+   }
+   cell.valueLabel.text = [currencyFormatter stringFromNumber:@(item.valueInDollars)];
+
    cell.thumbnailView.image = item.thumbnail;
 
    __weak ItemCell *weakCell = cell;

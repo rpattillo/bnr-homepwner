@@ -232,9 +232,10 @@
 
    NSString *typeLabel = [self.item.assetType valueForKey:@"label"];
    if ( !typeLabel) {
-      typeLabel = @"None";
+      typeLabel = NSLocalizedString(@"None", @"Type label None");
    }
-   self.assetTypeButton.title = [NSString stringWithFormat:@"Type: %@", typeLabel];
+   NSString *format = NSLocalizedString(@"Type: %@", @"Asset Type Button Format");
+   self.assetTypeButton.title = [NSString stringWithFormat:format, typeLabel];
 
 
    [self updateFonts];

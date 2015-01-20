@@ -1,0 +1,15 @@
+
+/* Class = "IBUILabel"; text = "Value"; ObjectID = "76c-69-Xes"; */
+"76c-69-Xes.text" = "Valor";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "PYZ-Z6-SPp"; */
+"PYZ-Z6-SPp.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "Shx-oT-hmQ"; */
+"Shx-oT-hmQ.text" = "Nombre";
+
+/* Class = "IBUIBarButtonItem"; title = "Item"; ObjectID = "bI3-Fd-mag"; */
+"bI3-Fd-mag.title" = "Item";
+
+/* Class = "IBUILabel"; text = "Serial"; ObjectID = "wIe-LV-jrx"; */
+"wIe-LV-jrx.text" = "Numéro de serie";
