@@ -9,6 +9,7 @@
 #import "ItemStore.h"
 #import "Item.h"
 #import "ImageStore.h"
+#import "AppDelegate.h"
 
 @import CoreData;
 
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) NSManagedObjectModel *model;
 
 @end
+
 
 
 @implementation ItemStore
@@ -130,6 +132,12 @@
                                               inManagedObjectContext:self.context];
 
    item.orderingValue = order;
+
+   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+   item.valueInDollars = (int)[defaults integerForKey:NextItemValuePrefsKey];
+   item.itemName = [defaults objectForKey:NextItemNamePrefsKey];
+
+   NSLog(@"defaults = %@", [defaults dictionaryRepresentation]);
 
    [self.privateItems addObject:item];
    

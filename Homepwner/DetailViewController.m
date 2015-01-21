@@ -11,6 +11,7 @@
 #import "Item.h"
 #import "ImageStore.h"
 #import "ItemStore.h"
+#import "AppDelegate.h"
 
 @interface DetailViewController ()
    <UINavigationControllerDelegate,
@@ -249,7 +250,14 @@
    Item *item = self.item;
    item.itemName = self.nameField.text;
    item.serialNumber = self.serialNumberField.text;
-   item.valueInDollars = [self.valueField.text intValue];
+
+   int newValue = [self.valueField.text intValue];
+   if (newValue != item.valueInDollars) {
+      item.valueInDollars = newValue;
+
+      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+      [defaults setInteger:newValue forKey:NextItemValuePrefsKey];
+   }
 }
 
 

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
+extern NSString* const NextItemValuePrefsKey;
+extern NSString* const NextItemNamePrefsKey;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

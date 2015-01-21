@@ -10,11 +10,27 @@
 #import "ItemsViewController.h"
 #import "ItemStore.h"
 
+NSString* const NextItemValuePrefsKey = @"NextItemValue";
+NSString* const NextItemNamePrefsKey = @"NextItemName";
+
+
 @interface AppDelegate ()
 
 @end
 
+
+
 @implementation AppDelegate
+
++ (void)initialize
+{
+   NSDictionary *factorySettings = @{NextItemValuePrefsKey: @75,
+                                     NextItemNamePrefsKey: @"Coffee Cup"};
+
+   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+   [defaults registerDefaults:factorySettings];
+}
+
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

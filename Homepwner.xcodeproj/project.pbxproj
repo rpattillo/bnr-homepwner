@@ -17,6 +17,7 @@
 		9C3A12B11A4B521A005650C0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A12AF1A4B521A005650C0 /* DetailViewController.m */; };
 		9C5C696F1A4F2854007046CD /* ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C696E1A4F2854007046CD /* ImageStore.m */; };
 		9C79019D1A6DEA0000707E82 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C79019F1A6DEA0000707E82 /* Localizable.strings */; };
+		9C7901A51A6F372000707E82 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C7901A41A6F372000707E82 /* Settings.bundle */; };
 		9C8D702A1A6D5B17008C9BFB /* Homepwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C8D70281A6D5B17008C9BFB /* Homepwner.xcdatamodeld */; };
 		9C8D702D1A6D6043008C9BFB /* ImageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8D702C1A6D6043008C9BFB /* ImageTransformer.m */; };
 		9C8D70301A6D6C70008C9BFB /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8D702F1A6D6C70008C9BFB /* Item.m */; };
@@ -58,6 +59,7 @@
 		9C5C696E1A4F2854007046CD /* ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageStore.m; sourceTree = "<group>"; };
 		9C79019E1A6DEA0000707E82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C7901A11A6DEA3000707E82 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C7901A41A6F372000707E82 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9C8D70291A6D5B17008C9BFB /* Homepwner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homepwner.xcdatamodel; sourceTree = "<group>"; };
 		9C8D702B1A6D6043008C9BFB /* ImageTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTransformer.h; sourceTree = "<group>"; };
 		9C8D702C1A6D6043008C9BFB /* ImageTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTransformer.m; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				9C346A701A4661F7009AFAA6 /* ItemsViewController.m */,
 				9C346A551A465AF4009AFAA6 /* LaunchScreen.xib */,
 				9C79019F1A6DEA0000707E82 /* Localizable.strings */,
+				9C7901A41A6F372000707E82 /* Settings.bundle */,
 				9C346A461A465AF4009AFAA6 /* Supporting Files */,
 			);
 			path = Homepwner;
@@ -255,6 +258,7 @@
 				9CE0D0E91A64907400FD6705 /* ItemCell.xib in Resources */,
 				9C346A571A465AF4009AFAA6 /* LaunchScreen.xib in Resources */,
 				9C346A541A465AF4009AFAA6 /* Images.xcassets in Resources */,
+				9C7901A51A6F372000707E82 /* Settings.bundle in Resources */,
 				9C8D70341A6DE0BE008C9BFB /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
